@@ -44,7 +44,7 @@ namespace ipfs_uploader
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void NewFolderBtn_Click(object sender, EventArgs e)
         {
             string input = Microsoft.VisualBasic.Interaction.InputBox("Enter Folder Name", "New Folder", "", -1, -1);
             if (!string.IsNullOrEmpty(input))
@@ -81,7 +81,7 @@ namespace ipfs_uploader
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void BackBtn_Click(object sender, EventArgs e)
         {
             if (currentPath != "/")
             {
@@ -90,6 +90,8 @@ namespace ipfs_uploader
                 {
                     currentPath = "/" + split_path[i];
                 }
+                if (currentPath != "/")
+                    currentPath += "/";
                 UpdateContent();
                 ipfs_path_txt.Text = currentPath;
             }
@@ -119,6 +121,14 @@ namespace ipfs_uploader
             if (FilesListBox.SelectedItem != null)
             {
                 Process.Start("http://localhost:8082/ipfs/" + FileHashes[FilesListBox.SelectedIndex]);
+            }
+        }
+        private void RemoveFile_Click(object sender, EventArgs e)
+        {
+            if (FilesListBox.SelectedItem != null)
+            {
+                if (RemovePath(currentPath + "/" + FilesListBox.SelectedItem) == "")
+                    UpdateContent();
             }
         }
     }

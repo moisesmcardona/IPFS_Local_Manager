@@ -40,15 +40,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.FilesListBox = new System.Windows.Forms.ListBox();
+            this.FilesListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.RemoveFile = new System.Windows.Forms.ToolStripMenuItem();
             this.UploadQueue = new System.Windows.Forms.ListBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.BackButton = new System.Windows.Forms.Button();
+            this.NewFolderButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.FolderListBoxContextMenu.SuspendLayout();
+            this.FilesListBoxContextMenu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -150,12 +153,27 @@
             this.FilesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.FilesListBox.ContextMenuStrip = this.FilesListBoxContextMenu;
             this.FilesListBox.FormattingEnabled = true;
             this.FilesListBox.Location = new System.Drawing.Point(6, 19);
             this.FilesListBox.Name = "FilesListBox";
             this.FilesListBox.Size = new System.Drawing.Size(535, 186);
             this.FilesListBox.TabIndex = 8;
             this.FilesListBox.DoubleClick += new System.EventHandler(this.FilesListBox_DoubleClick);
+            // 
+            // FilesListBoxContextMenu
+            // 
+            this.FilesListBoxContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RemoveFile});
+            this.FilesListBoxContextMenu.Name = "FolderListBoxContextMenu";
+            this.FilesListBoxContextMenu.Size = new System.Drawing.Size(118, 26);
+            // 
+            // RemoveFile
+            // 
+            this.RemoveFile.Name = "RemoveFile";
+            this.RemoveFile.Size = new System.Drawing.Size(117, 22);
+            this.RemoveFile.Text = "Remove";
+            this.RemoveFile.Click += new System.EventHandler(this.RemoveFile_Click);
             // 
             // UploadQueue
             // 
@@ -168,27 +186,27 @@
             this.UploadQueue.Size = new System.Drawing.Size(538, 199);
             this.UploadQueue.TabIndex = 10;
             // 
-            // button3
+            // BackButton
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.Location = new System.Drawing.Point(3, 222);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 23);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Back";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.BackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BackButton.Location = new System.Drawing.Point(3, 222);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(87, 23);
+            this.BackButton.TabIndex = 11;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackBtn_Click);
             // 
-            // button4
+            // NewFolderButton
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button4.Location = new System.Drawing.Point(96, 222);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 23);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "New Folder";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.NewFolderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.NewFolderButton.Location = new System.Drawing.Point(96, 222);
+            this.NewFolderButton.Name = "NewFolderButton";
+            this.NewFolderButton.Size = new System.Drawing.Size(87, 23);
+            this.NewFolderButton.TabIndex = 12;
+            this.NewFolderButton.Text = "New Folder";
+            this.NewFolderButton.UseVisualStyleBackColor = true;
+            this.NewFolderButton.Click += new System.EventHandler(this.NewFolderBtn_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -221,9 +239,9 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.NewFolderButton);
             this.panel2.Controls.Add(this.FoldersListBox);
-            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.BackButton);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(559, 3);
@@ -265,6 +283,7 @@
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             this.FolderListBoxContextMenu.ResumeLayout(false);
+            this.FilesListBoxContextMenu.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -290,8 +309,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox FilesListBox;
         private System.Windows.Forms.ListBox UploadQueue;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Button NewFolderButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -299,6 +318,8 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ContextMenuStrip FolderListBoxContextMenu;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip FilesListBoxContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem RemoveFile;
     }
 }
 
