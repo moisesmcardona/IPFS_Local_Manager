@@ -117,7 +117,7 @@
             this.UploadBtn.Name = "UploadBtn";
             this.UploadBtn.Size = new System.Drawing.Size(499, 23);
             this.UploadBtn.TabIndex = 5;
-            this.UploadBtn.Text = "upload";
+            this.UploadBtn.Text = "Upload";
             this.UploadBtn.UseVisualStyleBackColor = true;
             this.UploadBtn.Click += new System.EventHandler(this.UploadBtn_Click);
             // 
