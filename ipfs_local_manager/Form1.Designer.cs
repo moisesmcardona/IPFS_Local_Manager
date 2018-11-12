@@ -36,6 +36,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.FoldersListBox = new System.Windows.Forms.ListBox();
             this.FolderListBoxContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openInBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -67,7 +68,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.FolderFilenameTxt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.openInBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderListBoxContextMenu.SuspendLayout();
             this.FilesListBoxContextMenu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -95,7 +95,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ipfs_path_txt.Location = new System.Drawing.Point(9, 26);
             this.ipfs_path_txt.Name = "ipfs_path_txt";
-            this.ipfs_path_txt.Size = new System.Drawing.Size(484, 20);
+            this.ipfs_path_txt.Size = new System.Drawing.Size(499, 20);
             this.ipfs_path_txt.TabIndex = 1;
             this.ipfs_path_txt.Text = "/";
             // 
@@ -114,7 +114,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.UploadBtn.Location = new System.Drawing.Point(9, 52);
             this.UploadBtn.Name = "UploadBtn";
-            this.UploadBtn.Size = new System.Drawing.Size(484, 23);
+            this.UploadBtn.Size = new System.Drawing.Size(499, 23);
             this.UploadBtn.TabIndex = 5;
             this.UploadBtn.Text = "upload";
             this.UploadBtn.UseVisualStyleBackColor = true;
@@ -133,7 +133,7 @@
             this.FoldersListBox.FormattingEnabled = true;
             this.FoldersListBox.Location = new System.Drawing.Point(3, 23);
             this.FoldersListBox.Name = "FoldersListBox";
-            this.FoldersListBox.Size = new System.Drawing.Size(485, 238);
+            this.FoldersListBox.Size = new System.Drawing.Size(500, 173);
             this.FoldersListBox.TabIndex = 6;
             this.FoldersListBox.DoubleClick += new System.EventHandler(this.FoldersListBox_DoubleClick);
             // 
@@ -143,12 +143,19 @@
             this.openInBrowserToolStripMenuItem,
             this.removeToolStripMenuItem});
             this.FolderListBoxContextMenu.Name = "FolderListBoxContextMenu";
-            this.FolderListBoxContextMenu.Size = new System.Drawing.Size(181, 70);
+            this.FolderListBoxContextMenu.Size = new System.Drawing.Size(162, 48);
+            // 
+            // openInBrowserToolStripMenuItem
+            // 
+            this.openInBrowserToolStripMenuItem.Name = "openInBrowserToolStripMenuItem";
+            this.openInBrowserToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.openInBrowserToolStripMenuItem.Text = "Open in Browser";
+            this.openInBrowserToolStripMenuItem.Click += new System.EventHandler(this.openInBrowserToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
@@ -179,7 +186,7 @@
             this.FilesListBox.FormattingEnabled = true;
             this.FilesListBox.Location = new System.Drawing.Point(6, 19);
             this.FilesListBox.Name = "FilesListBox";
-            this.FilesListBox.Size = new System.Drawing.Size(482, 238);
+            this.FilesListBox.Size = new System.Drawing.Size(497, 212);
             this.FilesListBox.TabIndex = 8;
             this.FilesListBox.SelectedIndexChanged += new System.EventHandler(this.FilesListBox_SelectedIndexChanged);
             this.FilesListBox.DoubleClick += new System.EventHandler(this.FilesListBox_DoubleClick);
@@ -206,13 +213,13 @@
             this.UploadQueue.FormattingEnabled = true;
             this.UploadQueue.Location = new System.Drawing.Point(9, 23);
             this.UploadQueue.Name = "UploadQueue";
-            this.UploadQueue.Size = new System.Drawing.Size(484, 251);
+            this.UploadQueue.Size = new System.Drawing.Size(499, 199);
             this.UploadQueue.TabIndex = 10;
             // 
             // BackButton
             // 
             this.BackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BackButton.Location = new System.Drawing.Point(3, 283);
+            this.BackButton.Location = new System.Drawing.Point(3, 215);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(87, 23);
             this.BackButton.TabIndex = 11;
@@ -223,7 +230,7 @@
             // NewFolderButton
             // 
             this.NewFolderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NewFolderButton.Location = new System.Drawing.Point(96, 283);
+            this.NewFolderButton.Location = new System.Drawing.Point(96, 215);
             this.NewFolderButton.Name = "NewFolderButton";
             this.NewFolderButton.Size = new System.Drawing.Size(87, 23);
             this.NewFolderButton.TabIndex = 12;
@@ -249,7 +256,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1005, 636);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1035, 501);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // panel1
@@ -259,7 +266,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(496, 312);
+            this.panel1.Size = new System.Drawing.Size(511, 244);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -269,9 +276,9 @@
             this.panel2.Controls.Add(this.BackButton);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(505, 3);
+            this.panel2.Location = new System.Drawing.Point(520, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(497, 312);
+            this.panel2.Size = new System.Drawing.Size(512, 244);
             this.panel2.TabIndex = 1;
             // 
             // panel3
@@ -281,9 +288,9 @@
             this.panel3.Controls.Add(this.ipfs_path_txt);
             this.panel3.Controls.Add(this.UploadBtn);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 321);
+            this.panel3.Location = new System.Drawing.Point(3, 253);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(496, 312);
+            this.panel3.Size = new System.Drawing.Size(511, 245);
             this.panel3.TabIndex = 2;
             // 
             // configGroupBox
@@ -296,7 +303,7 @@
             this.configGroupBox.Controls.Add(this.APIEndpointTxt);
             this.configGroupBox.Location = new System.Drawing.Point(12, 81);
             this.configGroupBox.Name = "configGroupBox";
-            this.configGroupBox.Size = new System.Drawing.Size(480, 161);
+            this.configGroupBox.Size = new System.Drawing.Size(495, 161);
             this.configGroupBox.TabIndex = 6;
             this.configGroupBox.TabStop = false;
             this.configGroupBox.Text = "Configuration:";
@@ -316,7 +323,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.IPFSGateway.Location = new System.Drawing.Point(6, 78);
             this.IPFSGateway.Name = "IPFSGateway";
-            this.IPFSGateway.Size = new System.Drawing.Size(468, 20);
+            this.IPFSGateway.Size = new System.Drawing.Size(483, 20);
             this.IPFSGateway.TabIndex = 10;
             this.IPFSGateway.TextChanged += new System.EventHandler(this.IPFSGateway_TextChanged);
             // 
@@ -335,7 +342,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.APIEndpointTxt.Location = new System.Drawing.Point(6, 34);
             this.APIEndpointTxt.Name = "APIEndpointTxt";
-            this.APIEndpointTxt.Size = new System.Drawing.Size(468, 20);
+            this.APIEndpointTxt.Size = new System.Drawing.Size(483, 20);
             this.APIEndpointTxt.TabIndex = 8;
             this.APIEndpointTxt.TextChanged += new System.EventHandler(this.APIEndpointTxt_TextChanged);
             // 
@@ -344,9 +351,9 @@
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.FilesListBox);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(505, 321);
+            this.panel4.Location = new System.Drawing.Point(520, 253);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(497, 312);
+            this.panel4.Size = new System.Drawing.Size(512, 245);
             this.panel4.TabIndex = 3;
             // 
             // FileInfoGroupBox
@@ -358,7 +365,7 @@
             this.FileInfoGroupBox.Controls.Add(this.HashLabel);
             this.FileInfoGroupBox.Controls.Add(this.FileNameTxt);
             this.FileInfoGroupBox.Controls.Add(this.filenameLabel);
-            this.FileInfoGroupBox.Location = new System.Drawing.Point(1011, 126);
+            this.FileInfoGroupBox.Location = new System.Drawing.Point(1041, 126);
             this.FileInfoGroupBox.Name = "FileInfoGroupBox";
             this.FileInfoGroupBox.Size = new System.Drawing.Size(288, 151);
             this.FileInfoGroupBox.TabIndex = 14;
@@ -420,7 +427,7 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.FolderFilenameTxt);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Location = new System.Drawing.Point(1011, 3);
+            this.groupBox1.Location = new System.Drawing.Point(1041, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(288, 117);
             this.groupBox1.TabIndex = 15;
@@ -459,19 +466,12 @@
             this.label9.TabIndex = 4;
             this.label9.Text = "Filename:";
             // 
-            // openInBrowserToolStripMenuItem
-            // 
-            this.openInBrowserToolStripMenuItem.Name = "openInBrowserToolStripMenuItem";
-            this.openInBrowserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openInBrowserToolStripMenuItem.Text = "Open in Browser";
-            this.openInBrowserToolStripMenuItem.Click += new System.EventHandler(this.openInBrowserToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1311, 637);
+            this.ClientSize = new System.Drawing.Size(1341, 502);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.FileInfoGroupBox);
             this.Controls.Add(this.tableLayoutPanel1);
