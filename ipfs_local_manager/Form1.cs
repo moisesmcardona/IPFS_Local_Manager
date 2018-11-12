@@ -183,5 +183,14 @@ namespace ipfs_uploader
             currentPath = "/";
             UpdateContent();
         }
+
+        private void FoldersListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FoldersListBox.SelectedItem != null)
+            {
+                FolderFilenameTxt.Text = FoldersListBox.SelectedItem.ToString();
+                FolderHashTxt.Text = FolderHashes [FoldersListBox.SelectedIndex];
+            }
+        }
     }
 }

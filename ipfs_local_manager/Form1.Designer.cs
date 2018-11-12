@@ -49,6 +49,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.GoToRoot = new System.Windows.Forms.LinkLabel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.configGroupBox = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -68,7 +69,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.FolderFilenameTxt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.GoToRoot = new System.Windows.Forms.LinkLabel();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.FolderListBoxContextMenu.SuspendLayout();
@@ -138,6 +138,7 @@
             this.FoldersListBox.Name = "FoldersListBox";
             this.FoldersListBox.Size = new System.Drawing.Size(500, 173);
             this.FoldersListBox.TabIndex = 6;
+            this.FoldersListBox.SelectedIndexChanged += new System.EventHandler(this.FoldersListBox_SelectedIndexChanged);
             this.FoldersListBox.DoubleClick += new System.EventHandler(this.FoldersListBox_DoubleClick);
             // 
             // FolderListBoxContextMenu
@@ -284,6 +285,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(512, 244);
             this.panel2.TabIndex = 1;
+            // 
+            // GoToRoot
+            // 
+            this.GoToRoot.AutoSize = true;
+            this.GoToRoot.Location = new System.Drawing.Point(440, 7);
+            this.GoToRoot.Name = "GoToRoot";
+            this.GoToRoot.Size = new System.Drawing.Size(63, 13);
+            this.GoToRoot.TabIndex = 13;
+            this.GoToRoot.TabStop = true;
+            this.GoToRoot.Text = "Go To Root";
+            this.GoToRoot.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GoToRoot_LinkClicked);
             // 
             // panel3
             // 
@@ -469,17 +481,6 @@
             this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 4;
             this.label9.Text = "Filename:";
-            // 
-            // GoToRoot
-            // 
-            this.GoToRoot.AutoSize = true;
-            this.GoToRoot.Location = new System.Drawing.Point(440, 7);
-            this.GoToRoot.Name = "GoToRoot";
-            this.GoToRoot.Size = new System.Drawing.Size(63, 13);
-            this.GoToRoot.TabIndex = 13;
-            this.GoToRoot.TabStop = true;
-            this.GoToRoot.Text = "Go To Root";
-            this.GoToRoot.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GoToRoot_LinkClicked);
             // 
             // label10
             // 
