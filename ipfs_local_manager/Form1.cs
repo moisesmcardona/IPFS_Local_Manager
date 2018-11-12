@@ -12,6 +12,7 @@ namespace ipfs_uploader
         private string currentPath = "/";
         private List<string> UploadToFolder = new List<string> { };
         private List<string> FileHashes = new List<string> { };
+        private List<string> FileSize = new List<string> { };
         public Form1()
         {
             InitializeComponent();
@@ -63,21 +64,32 @@ namespace ipfs_uploader
 
         private void UpdateContent()
         {
+            dynamic currentFolderStat = JsonConvert.DeserializeObject(Stat(currentPath));
+            string[] split_path = currentPath.Split('/');
+            if (currentPath != "/")
+                FolderFilenameTxt.Text = split_path[split_path.Length - 2];
+            else
+                FolderFilenameTxt.Text = "Root";
+            FolderHashTxt.Text = currentFolderStat["Hash"];
             dynamic content = JsonConvert.DeserializeObject(ListContent(currentPath));
             FoldersListBox.Items.Clear();
             FilesListBox.Items.Clear();
             FileHashes.Clear();
+            FileSize.Clear();
             if (content["Entries"] != null)
             {
                 foreach (dynamic entry in content["Entries"])
                 {
                     dynamic entry_details = JsonConvert.DeserializeObject(Stat(currentPath + "/" + entry["Name"]));
                     if (entry_details["Type"] == "directory")
+                    {
                         FoldersListBox.Items.Add(entry["Name"]);
+                    }
                     else
                     {
                         FilesListBox.Items.Add(entry["Name"]);
                         FileHashes.Add(entry_details["Hash"].ToString());
+                        FileSize.Add(String.Format("{0:2d}", entry_details["Hash"].ToString()));
                     }
                 }
             }
@@ -144,6 +156,17 @@ namespace ipfs_uploader
         {
             Properties.Settings.Default.IPFSGateway = IPFSGateway.Text;
             Properties.Settings.Default.Save();
+        }
+
+        private void FilesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FilesListBox.SelectedItem != null)
+            {
+                FileNameTxt.Text = FilesListBox.SelectedItem.ToString();
+                HashTxt.Text = FileHashes[FilesListBox.SelectedIndex];
+                FileSizeTxt.Text = FileSize[FilesListBox.SelectedIndex];
+
+            }
         }
     }
 }

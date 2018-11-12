@@ -49,19 +49,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.configGroupBox = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.APIEndpointTxt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.IPFSGateway = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.APIEndpointTxt = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.FileInfoGroupBox = new System.Windows.Forms.GroupBox();
-            this.filenameLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.HashTxt = new System.Windows.Forms.Label();
             this.FileSizeTxt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.HashTxt = new System.Windows.Forms.TextBox();
+            this.HashLabel = new System.Windows.Forms.Label();
+            this.FileNameTxt = new System.Windows.Forms.TextBox();
+            this.filenameLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.FolderHashTxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -73,8 +73,8 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.configGroupBox.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.FileInfoGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -179,6 +179,7 @@
             this.FilesListBox.Name = "FilesListBox";
             this.FilesListBox.Size = new System.Drawing.Size(482, 238);
             this.FilesListBox.TabIndex = 8;
+            this.FilesListBox.SelectedIndexChanged += new System.EventHandler(this.FilesListBox_SelectedIndexChanged);
             this.FilesListBox.DoubleClick += new System.EventHandler(this.FilesListBox_DoubleClick);
             // 
             // FilesListBoxContextMenu
@@ -283,16 +284,6 @@
             this.panel3.Size = new System.Drawing.Size(496, 312);
             this.panel3.TabIndex = 2;
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.FilesListBox);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(505, 321);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(497, 312);
-            this.panel4.TabIndex = 3;
-            // 
             // configGroupBox
             // 
             this.configGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -307,25 +298,6 @@
             this.configGroupBox.TabIndex = 6;
             this.configGroupBox.TabStop = false;
             this.configGroupBox.Text = "Configuration:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "API Endpoint:";
-            // 
-            // APIEndpointTxt
-            // 
-            this.APIEndpointTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.APIEndpointTxt.Location = new System.Drawing.Point(6, 34);
-            this.APIEndpointTxt.Name = "APIEndpointTxt";
-            this.APIEndpointTxt.Size = new System.Drawing.Size(468, 20);
-            this.APIEndpointTxt.TabIndex = 8;
-            this.APIEndpointTxt.TextChanged += new System.EventHandler(this.APIEndpointTxt_TextChanged);
             // 
             // label6
             // 
@@ -346,14 +318,43 @@
             this.IPFSGateway.TabIndex = 10;
             this.IPFSGateway.TextChanged += new System.EventHandler(this.IPFSGateway_TextChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "API Endpoint:";
+            // 
+            // APIEndpointTxt
+            // 
+            this.APIEndpointTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.APIEndpointTxt.Location = new System.Drawing.Point(6, 34);
+            this.APIEndpointTxt.Name = "APIEndpointTxt";
+            this.APIEndpointTxt.Size = new System.Drawing.Size(468, 20);
+            this.APIEndpointTxt.TabIndex = 8;
+            this.APIEndpointTxt.TextChanged += new System.EventHandler(this.APIEndpointTxt_TextChanged);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.FilesListBox);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(505, 321);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(497, 312);
+            this.panel4.TabIndex = 3;
+            // 
             // FileInfoGroupBox
             // 
             this.FileInfoGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FileInfoGroupBox.Controls.Add(this.FileSizeTxt);
             this.FileInfoGroupBox.Controls.Add(this.label7);
-            this.FileInfoGroupBox.Controls.Add(this.textBox2);
             this.FileInfoGroupBox.Controls.Add(this.HashTxt);
-            this.FileInfoGroupBox.Controls.Add(this.textBox1);
+            this.FileInfoGroupBox.Controls.Add(this.HashLabel);
+            this.FileInfoGroupBox.Controls.Add(this.FileNameTxt);
             this.FileInfoGroupBox.Controls.Add(this.filenameLabel);
             this.FileInfoGroupBox.Location = new System.Drawing.Point(1011, 126);
             this.FileInfoGroupBox.Name = "FileInfoGroupBox";
@@ -361,38 +362,6 @@
             this.FileInfoGroupBox.TabIndex = 14;
             this.FileInfoGroupBox.TabStop = false;
             this.FileInfoGroupBox.Text = "File Information:";
-            // 
-            // filenameLabel
-            // 
-            this.filenameLabel.AutoSize = true;
-            this.filenameLabel.Location = new System.Drawing.Point(6, 16);
-            this.filenameLabel.Name = "filenameLabel";
-            this.filenameLabel.Size = new System.Drawing.Size(52, 13);
-            this.filenameLabel.TabIndex = 0;
-            this.filenameLabel.Text = "Filename:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(9, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(273, 20);
-            this.textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(9, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(273, 20);
-            this.textBox2.TabIndex = 3;
-            // 
-            // HashTxt
-            // 
-            this.HashTxt.AutoSize = true;
-            this.HashTxt.Location = new System.Drawing.Point(6, 55);
-            this.HashTxt.Name = "HashTxt";
-            this.HashTxt.Size = new System.Drawing.Size(35, 13);
-            this.HashTxt.TabIndex = 2;
-            this.HashTxt.Text = "Hash:";
             // 
             // FileSizeTxt
             // 
@@ -409,6 +378,38 @@
             this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 4;
             this.label7.Text = "File Size:";
+            // 
+            // HashTxt
+            // 
+            this.HashTxt.Location = new System.Drawing.Point(9, 71);
+            this.HashTxt.Name = "HashTxt";
+            this.HashTxt.Size = new System.Drawing.Size(273, 20);
+            this.HashTxt.TabIndex = 3;
+            // 
+            // HashLabel
+            // 
+            this.HashLabel.AutoSize = true;
+            this.HashLabel.Location = new System.Drawing.Point(6, 55);
+            this.HashLabel.Name = "HashLabel";
+            this.HashLabel.Size = new System.Drawing.Size(35, 13);
+            this.HashLabel.TabIndex = 2;
+            this.HashLabel.Text = "Hash:";
+            // 
+            // FileNameTxt
+            // 
+            this.FileNameTxt.Location = new System.Drawing.Point(9, 32);
+            this.FileNameTxt.Name = "FileNameTxt";
+            this.FileNameTxt.Size = new System.Drawing.Size(273, 20);
+            this.FileNameTxt.TabIndex = 1;
+            // 
+            // filenameLabel
+            // 
+            this.filenameLabel.AutoSize = true;
+            this.filenameLabel.Location = new System.Drawing.Point(6, 16);
+            this.filenameLabel.Name = "filenameLabel";
+            this.filenameLabel.Size = new System.Drawing.Size(52, 13);
+            this.filenameLabel.TabIndex = 0;
+            this.filenameLabel.Text = "Filename:";
             // 
             // groupBox1
             // 
@@ -479,10 +480,10 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.configGroupBox.ResumeLayout(false);
             this.configGroupBox.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.FileInfoGroupBox.ResumeLayout(false);
             this.FileInfoGroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -522,9 +523,9 @@
         private System.Windows.Forms.GroupBox FileInfoGroupBox;
         private System.Windows.Forms.TextBox FileSizeTxt;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label HashTxt;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox HashTxt;
+        private System.Windows.Forms.Label HashLabel;
+        private System.Windows.Forms.TextBox FileNameTxt;
         private System.Windows.Forms.Label filenameLabel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox FolderHashTxt;
