@@ -1,7 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ipfs_uploader.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="APIEndpoint" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost:5001/api/v0/</Value>
+    </Setting>
+    <Setting Name="IPFSGateway" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost:8082/ipfs/</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

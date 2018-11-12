@@ -56,6 +56,8 @@ namespace ipfs_uploader
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            APIEndpointTxt.Text = Properties.Settings.Default.APIEndpoint;
+            IPFSGateway.Text = Properties.Settings.Default.IPFSGateway;
             UpdateContent();
         }
 
@@ -120,7 +122,7 @@ namespace ipfs_uploader
         {
             if (FilesListBox.SelectedItem != null)
             {
-                Process.Start("http://localhost:8082/ipfs/" + FileHashes[FilesListBox.SelectedIndex]);
+                Process.Start(Properties.Settings.Default.IPFSGateway + FileHashes[FilesListBox.SelectedIndex]);
             }
         }
         private void RemoveFile_Click(object sender, EventArgs e)
@@ -130,6 +132,18 @@ namespace ipfs_uploader
                 if (RemovePath(currentPath + "/" + FilesListBox.SelectedItem) == "")
                     UpdateContent();
             }
+        }
+
+        private void APIEndpointTxt_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.APIEndpoint = APIEndpointTxt.Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void IPFSGateway_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.IPFSGateway = IPFSGateway.Text;
+            Properties.Settings.Default.Save();
         }
     }
 }

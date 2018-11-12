@@ -12,7 +12,7 @@ namespace ipfs_uploader
 {
     class API
     {
-        private static string api_endpoint = "http://localhost:5001/api/v0/files";
+        private static string api_endpoint = Properties.Settings.Default.APIEndpoint + "files";
         public static string UploadFile(string ipfs_path, string file)
         {
             using (var client = new HttpClient())
