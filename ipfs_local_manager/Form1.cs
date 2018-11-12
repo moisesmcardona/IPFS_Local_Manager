@@ -11,8 +11,9 @@ namespace ipfs_uploader
     {
         private string currentPath = "/";
         private List<string> UploadToFolder = new List<string> { };
+        private List<string> FolderHashes = new List<string> { };
         private List<string> FileHashes = new List<string> { };
-        private List<string> FileSize = new List<string> { };
+        private List<long> FileSize = new List<long> { };
         public Form1()
         {
             InitializeComponent();
@@ -73,6 +74,7 @@ namespace ipfs_uploader
             FolderHashTxt.Text = currentFolderStat["Hash"];
             dynamic content = JsonConvert.DeserializeObject(ListContent(currentPath));
             FoldersListBox.Items.Clear();
+            FolderHashes.Clear();
             FilesListBox.Items.Clear();
             FileHashes.Clear();
             FileSize.Clear();
@@ -84,12 +86,13 @@ namespace ipfs_uploader
                     if (entry_details["Type"] == "directory")
                     {
                         FoldersListBox.Items.Add(entry["Name"]);
+                        FolderHashes.Add(entry_details["Hash"].ToString());
                     }
                     else
                     {
                         FilesListBox.Items.Add(entry["Name"]);
                         FileHashes.Add(entry_details["Hash"].ToString());
-                        FileSize.Add(String.Format("{0:2d}", entry_details["Hash"].ToString()));
+                        FileSize.Add(Convert.ToInt64(entry_details["Size"]));
                     }
                 }
             }
@@ -164,8 +167,15 @@ namespace ipfs_uploader
             {
                 FileNameTxt.Text = FilesListBox.SelectedItem.ToString();
                 HashTxt.Text = FileHashes[FilesListBox.SelectedIndex];
-                FileSizeTxt.Text = FileSize[FilesListBox.SelectedIndex];
+                FileSizeTxt.Text = String.Format("{0:N2} MB", FileSize[FilesListBox.SelectedIndex] / 1024.0 / 1024.0);
+            }
+        }
 
+        private void openInBrowserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (FoldersListBox.SelectedItem != null)
+            {
+                Process.Start(Properties.Settings.Default.IPFSGateway + FolderHashes[FoldersListBox.SelectedIndex]);
             }
         }
     }

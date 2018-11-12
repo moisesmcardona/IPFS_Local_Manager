@@ -67,6 +67,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.FolderFilenameTxt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.openInBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderListBoxContextMenu.SuspendLayout();
             this.FilesListBoxContextMenu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -139,9 +140,10 @@
             // FolderListBoxContextMenu
             // 
             this.FolderListBoxContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openInBrowserToolStripMenuItem,
             this.removeToolStripMenuItem});
             this.FolderListBoxContextMenu.Name = "FolderListBoxContextMenu";
-            this.FolderListBoxContextMenu.Size = new System.Drawing.Size(118, 26);
+            this.FolderListBoxContextMenu.Size = new System.Drawing.Size(181, 70);
             // 
             // removeToolStripMenuItem
             // 
@@ -457,6 +459,13 @@
             this.label9.TabIndex = 4;
             this.label9.Text = "Filename:";
             // 
+            // openInBrowserToolStripMenuItem
+            // 
+            this.openInBrowserToolStripMenuItem.Name = "openInBrowserToolStripMenuItem";
+            this.openInBrowserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openInBrowserToolStripMenuItem.Text = "Open in Browser";
+            this.openInBrowserToolStripMenuItem.Click += new System.EventHandler(this.openInBrowserToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -532,6 +541,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox FolderFilenameTxt;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ToolStripMenuItem openInBrowserToolStripMenuItem;
     }
 }
 
