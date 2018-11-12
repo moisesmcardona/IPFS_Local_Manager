@@ -65,6 +65,7 @@ namespace ipfs_uploader
 
         private void UpdateContent()
         {
+            ipfs_path_txt.Text = currentPath;
             dynamic currentFolderStat = JsonConvert.DeserializeObject(Stat(currentPath));
             string[] split_path = currentPath.Split('/');
             if (currentPath != "/")
@@ -110,7 +111,6 @@ namespace ipfs_uploader
                 if (currentPath != "/")
                     currentPath += "/";
                 UpdateContent();
-                ipfs_path_txt.Text = currentPath;
             }
         }
 
@@ -129,7 +129,6 @@ namespace ipfs_uploader
             {
                 currentPath += FoldersListBox.SelectedItem + "/";
                 UpdateContent();
-                ipfs_path_txt.Text = currentPath;
             }
         }
 
@@ -177,6 +176,12 @@ namespace ipfs_uploader
             {
                 Process.Start(Properties.Settings.Default.IPFSGateway + FolderHashes[FoldersListBox.SelectedIndex]);
             }
+        }
+
+        private void GoToRoot_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            currentPath = "/";
+            UpdateContent();
         }
     }
 }

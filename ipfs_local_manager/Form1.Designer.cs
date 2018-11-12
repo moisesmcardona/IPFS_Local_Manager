@@ -68,6 +68,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.FolderFilenameTxt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.GoToRoot = new System.Windows.Forms.LinkLabel();
             this.FolderListBoxContextMenu.SuspendLayout();
             this.FilesListBoxContextMenu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -271,6 +272,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.GoToRoot);
             this.panel2.Controls.Add(this.NewFolderButton);
             this.panel2.Controls.Add(this.FoldersListBox);
             this.panel2.Controls.Add(this.BackButton);
@@ -466,6 +468,17 @@
             this.label9.TabIndex = 4;
             this.label9.Text = "Filename:";
             // 
+            // GoToRoot
+            // 
+            this.GoToRoot.AutoSize = true;
+            this.GoToRoot.Location = new System.Drawing.Point(440, 7);
+            this.GoToRoot.Name = "GoToRoot";
+            this.GoToRoot.Size = new System.Drawing.Size(63, 13);
+            this.GoToRoot.TabIndex = 13;
+            this.GoToRoot.TabStop = true;
+            this.GoToRoot.Text = "Go To Root";
+            this.GoToRoot.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GoToRoot_LinkClicked);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -542,6 +555,7 @@
         private System.Windows.Forms.TextBox FolderFilenameTxt;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ToolStripMenuItem openInBrowserToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel GoToRoot;
     }
 }
 
