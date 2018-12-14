@@ -2,7 +2,7 @@
 
 This is a C# Windows Forms software that allows interaction with a local IPFS node.
 
-![GUI](https://ipfs.moisescardona.me/ipfs/Qmb7hLi3JY3VXH4fnY98m4piroMhCgnX622uWnHcWUBtJs)
+![GUI](https://moisescardona.me/files/2018-11-12/1.webp)
 
 Current features include:
 
